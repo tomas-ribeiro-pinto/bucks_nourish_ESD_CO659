@@ -17,13 +17,103 @@
 {{--    </style>--}}
 </head>
 
+<nav class="bg-customGreen">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <!-- Mobile menu button-->
+                <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="absolute -inset-0.5"></span>
+                    <span class="sr-only">Open main menu</span>
+                    <!--
+                      Icon when menu is closed.
+
+                      Menu open: "hidden", Menu closed: "block"
+                    -->
+                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <!--
+                      Icon when menu is open.
+
+                      Menu open: "block", Menu closed: "hidden"
+                    -->
+                    <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex flex-shrink-0 items-center">
+{{--                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">--}}
+                </div>
+                <div class="hidden sm:ml-6 sm:block">
+                    <div class="flex space-x-4">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <a href="/?" class="text-white hover:bg-green-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Home</a>
+                        <a href="/info" class="text-white hover:bg-green-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">Info</a>
+                        <a href="/faq" class="text-white hover:bg-green-700 hover:text-white rounded-md px-3 py-2 text-lg font-medium">FAQ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+{{--                <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">--}}
+{{--                    <span class="absolute -inset-1.5"></span>--}}
+{{--                    <span class="sr-only">View notifications</span>--}}
+{{--                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">--}}
+{{--                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />--}}
+{{--                    </svg>--}}
+{{--                </button>--}}
+
+                <!-- Profile dropdown -->
+                <div class="relative ml-3">
+                    <div>
+                        <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                            <span class="absolute -inset-1.5"></span>
+                            <span class="sr-only">Open user menu</span>
+                            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        </button>
+                    </div>
+
+                    <!--
+                      Dropdown menu, show/hide based on menu state.
+
+                      Entering: "transition ease-out duration-100"
+                        From: "transform opacity-0 scale-95"
+                        To: "transform opacity-100 scale-100"
+                      Leaving: "transition ease-in duration-75"
+                        From: "transform opacity-100 scale-100"
+                        To: "transform opacity-0 scale-95"
+                    -->
+{{--                    <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">--}}
+{{--                        <!-- Active: "bg-gray-100", Not Active: "" -->--}}
+{{--                        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>--}}
+{{--                        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>--}}
+{{--                        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>--}}
+{{--                    </div>--}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a href="/?" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Home</a>
+            <a href="/info" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Info</a>
+            <a href="/faq" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">FAQ</a>
+        </div>
+    </div>
+</nav>
+
 <body class="bg-white place-items-center h-[100vh]">
 
     <div class="flex justify-center">
         <img class="w-1/3" src="images/BucksNourishLogo.jpg" alt="logo">
     </div>
     <div class="flex justify-center mb-8">
-        <h1 class="font-bold text-xl underline">FAQs</h1>
+        <h1 class="font-bold text-xl underline text-black">FAQs</h1>
     </div>
 
     <div class="flex flex-col items-center">
@@ -33,7 +123,7 @@
                 <label for="faq1" class="flex items-center text-lg font-semi-bold
                 after:absolute after:content-['+'] after:right-5 after:text-2xl
                 after:text-gray-400 hover:after:text-gray-900 peer-checked:after:transform peer-checked:after:rotate-45">
-                    <h2 class="mr-2 h-8 w-8 bg-green-500 grid place-items-center text-white rounded-full">01</h2>
+                    <h2 class="mr-2 h-8 w-8 bg-customGreen grid place-items-center text-white rounded-full">01</h2>
                     <h3>Who we are?</h3>
                 </label>
                 <div class="answer mt-5 h-0 overflow-hidden transition ease-in-out duration-500 peer-checked:h-full">
@@ -48,7 +138,7 @@
                 <label for="faq2" class="flex items-center text-lg font-semi-bold
                 after:absolute after:content-['+'] after:right-5 after:text-2xl
                 after:text-gray-400 hover:after:text-gray-900 peer-checked:after:transform peer-checked:after:rotate-45">
-                    <h2 class="mr-2 h-8 w-8 bg-green-500 grid place-items-center text-white rounded-full">02</h2>
+                    <h2 class="mr-2 h-8 w-8 bg-customGreen grid place-items-center text-white rounded-full">02</h2>
                     <h3>What do we do?</h3>
                 </label>
                 <div class="answer mt-5 h-0 overflow-hidden transition ease-in-out duration-500 peer-checked:h-full">
@@ -62,7 +152,7 @@
                 <label for="faq3" class="flex items-center text-lg font-semi-bold
                 after:absolute after:content-['+'] after:right-5 after:text-2xl
                 after:text-gray-400 hover:after:text-gray-900 peer-checked:after:transform peer-checked:after:rotate-45">
-                    <h2 class="mr-2 h-8 w-8 bg-green-500 grid place-items-center text-white rounded-full">03</h2>
+                    <h2 class="mr-2 h-8 w-8 bg-customGreen grid place-items-center text-white rounded-full">03</h2>
                     <h3>What are our goals?</h3>
                 </label>
                 <div class="answer mt-5 h-0 overflow-hidden transition ease-in-out duration-500 peer-checked:h-full">
@@ -73,16 +163,16 @@
     </div>
 
 
-{{--<div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-center dark:bg-white selection:bg-red-500 selection:text-white">--}}
+{{--<div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-center selection:bg-red-500 selection:text-white">--}}
 {{--    @if (Route::has('login'))--}}
 {{--        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">--}}
 {{--            @auth--}}
-{{--                <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>--}}
+{{--                <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>--}}
 {{--            @else--}}
-{{--                <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>--}}
+{{--                <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>--}}
 
 {{--                @if (Route::has('register'))--}}
-{{--                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>--}}
+{{--                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>--}}
 {{--                @endif--}}
 {{--            @endauth--}}
 {{--        </div>--}}
@@ -99,7 +189,7 @@
 
 {{--            <div id="accordion-collapse" data-accordion="collapse">--}}
 {{--                <h2 id="accordion-collapse-heading-1">--}}
-{{--                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-black hover:bg-gray-100 dark:hover:bg-green-400 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">--}}
+{{--                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">--}}
 {{--                        <span>What is Flowbite?</span>--}}
 {{--                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">--}}
 {{--                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>--}}
@@ -107,13 +197,13 @@
 {{--                    </button>--}}
 {{--                </h2>--}}
 {{--                <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">--}}
-{{--                    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">--}}
-{{--                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>--}}
-{{--                        <p class="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>--}}
+{{--                    <div class="p-5 border border-b-0 border-gray-200">--}}
+{{--                        <p class="mb-2 text-gray-500">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>--}}
+{{--                        <p class="text-gray-500">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" class="text-blue-600 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>--}}
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--                <h2 id="accordion-collapse-heading-2">--}}
-{{--                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-black hover:bg-gray-100 dark:hover:bg-green-400 gap-3" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">--}}
+{{--                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 gap-3" data-accordion-target="#accordion-collapse-body-2" aria-expanded="false" aria-controls="accordion-collapse-body-2">--}}
 {{--                        <span>Is there a Figma file available?</span>--}}
 {{--                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">--}}
 {{--                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>--}}
@@ -121,13 +211,13 @@
 {{--                    </button>--}}
 {{--                </h2>--}}
 {{--                <div id="accordion-collapse-body-2" class="hidden" aria-labelledby="accordion-collapse-heading-2">--}}
-{{--                    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">--}}
-{{--                        <p class="mb-2 text-gray-500 dark:text-gray-400">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>--}}
-{{--                        <p class="text-gray-500 dark:text-gray-400">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 dark:text-blue-500 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>--}}
+{{--                    <div class="p-5 border border-b-0 border-gray-200">--}}
+{{--                        <p class="mb-2 text-gray-500">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>--}}
+{{--                        <p class="text-gray-500">Check out the <a href="https://flowbite.com/figma/" class="text-blue-600 hover:underline">Figma design system</a> based on the utility classes from Tailwind CSS and components from Flowbite.</p>--}}
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--                <h2 id="accordion-collapse-heading-3">--}}
-{{--                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-blackhover:bg-gray-100 dark:hover:bg-green-400 gap-3" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3">--}}
+{{--                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black border border-gray-200 focus:ring-4 focus:ring-gray-200 gap-3" data-accordion-target="#accordion-collapse-body-3" aria-expanded="false" aria-controls="accordion-collapse-body-3">--}}
 {{--                        <span>What are the differences between Flowbite and Tailwind UI?</span>--}}
 {{--                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">--}}
 {{--                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>--}}
@@ -135,13 +225,13 @@
 {{--                    </button>--}}
 {{--                </h2>--}}
 {{--                <div id="accordion-collapse-body-3" class="hidden" aria-labelledby="accordion-collapse-heading-3">--}}
-{{--                    <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">--}}
-{{--                        <p class="mb-2 text-gray-500 dark:text-gray-400">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>--}}
-{{--                        <p class="mb-2 text-gray-500 dark:text-gray-400">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>--}}
-{{--                        <p class="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>--}}
-{{--                        <ul class="ps-5 text-gray-500 list-disc dark:text-gray-400">--}}
-{{--                            <li><a href="https://flowbite.com/pro/" class="text-blue-600 dark:text-blue-500 hover:underline">Flowbite Pro</a></li>--}}
-{{--                            <li><a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 dark:text-blue-500 hover:underline">Tailwind UI</a></li>--}}
+{{--                    <div class="p-5 border border-t-0 border-gray-200">--}}
+{{--                        <p class="mb-2 text-gray-500">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>--}}
+{{--                        <p class="mb-2 text-gray-500">However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.</p>--}}
+{{--                        <p class="mb-2 text-gray-500">Learn more about these technologies:</p>--}}
+{{--                        <ul class="ps-5 text-gray-500 list-disc">--}}
+{{--                            <li><a href="https://flowbite.com/pro/" class="text-blue-600 hover:underline">Flowbite Pro</a></li>--}}
+{{--                            <li><a href="https://tailwindui.com/" rel="nofollow" class="text-blue-600 hover:underline">Tailwind UI</a></li>--}}
 {{--                        </ul>--}}
 {{--                    </div>--}}
 {{--                </div>--}}
@@ -150,10 +240,10 @@
 {{--        </div>--}}
 
 {{--        <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">--}}
-{{--            <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">--}}
+{{--            <div class="text-center text-sm text-gray-500 sm:text-left">--}}
 {{--                <div class="flex items-center gap-4">--}}
-{{--                    <a href="https://github.com/sponsors/taylorotwell" class="group inline-flex items-center hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="-mt-px mr-1 w-5 h-5 stroke-gray-400 dark:stroke-gray-600 group-hover:stroke-gray-600 dark:group-hover:stroke-gray-400">--}}
+{{--                    <a href="https://github.com/sponsors/taylorotwell" class="group inline-flex items-center hover:text-gray-700 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">--}}
+{{--                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="-mt-px mr-1 w-5 h-5 stroke-gray-400 group-hover:stroke-gray-600">--}}
 {{--                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />--}}
 {{--                        </svg>--}}
 {{--                        Sponsor--}}
@@ -161,7 +251,7 @@
 {{--                </div>--}}
 {{--            </div>--}}
 
-{{--            <div class="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">--}}
+{{--            <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">--}}
 {{--                Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})--}}
 {{--            </div>--}}
 {{--        </div>--}}
