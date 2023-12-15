@@ -13,17 +13,18 @@ return new class extends Migration
     {
         Schema::create('foodbanks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('organization_id');
-            $table->foreignId('address_id');
-            $table->foreignId('logo_annex_id');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('website_url');
-            $table->boolean('requires_referral');
-            $table->string('opening_hours');
-            $table->string('accessibility');
-            $table->string('comments');
+            $table->string('name')->nullable();
+            $table->string('type')->default('foodbank');
+            $table->foreignId('organization_id')->nullable();
+            $table->foreignId('address_id')->nullable();
+            $table->foreignId('logo_annex_id')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('website_url')->nullable();
+            $table->boolean('requires_referral')->nullable();
+            $table->string('opening_hours')->nullable();
+            $table->string('accessibility')->nullable();
+            $table->string('comments')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

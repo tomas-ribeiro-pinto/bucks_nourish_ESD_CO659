@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('foodbank_id');
-            $table->string('name');
-            $table->boolean('is_urgent');
+            $table->foreignId('foodbank_id')->nullable();
+            $table->string('name')->nullable();
+            $table->boolean('is_urgent')->nullable();
             $table->timestamps();
         });
     }

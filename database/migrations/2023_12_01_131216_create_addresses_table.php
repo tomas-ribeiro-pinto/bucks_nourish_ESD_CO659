@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('postcode');
             $table->string('county');
             $table->string('country');
-            $table->string('lat_lng');
+            $table->string('lat_lng')->nullable();
             $table->timestamps();
         });
     }
