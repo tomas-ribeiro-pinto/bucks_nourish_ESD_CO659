@@ -16,6 +16,9 @@
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-black-600 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 pr-5">Dashboard</a>
+                    <a href="{{ url('/about-us') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-black-600 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 pr-5">About Us</a>
+
+                    <a href="{{ url('/faq') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-black-600 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 pr-5">FAQ</a>
 
                     <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-black-600 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
