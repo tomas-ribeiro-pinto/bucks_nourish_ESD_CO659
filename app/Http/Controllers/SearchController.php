@@ -14,7 +14,12 @@ class SearchController extends Controller
         $lat = 51.6297;
         $lng = -0.7493;
 
-        return view('welcome', compact("lat", "lng"));
+        // Get the High Wycombe's closest foodbanks
+        $search = (new GiveAPIController)->search($lat, $lng);
+        $foodbanks = $search[0];
+        $markers = $search[1];
+
+        return view('welcome', compact("lat", "lng", "markers", "foodbanks"));
     }
 
     public function search(Request $request): View
@@ -31,6 +36,10 @@ class SearchController extends Controller
         $lat = $response->features[0]->center[1];
         $lng = $response->features[0]->center[0];
 
-        return view('welcome', compact("lat", "lng"));
+        $search = (new GiveAPIController)->search($lat, $lng);
+        $foodbanks = $search[0];
+        $markers = $search[1];
+
+        return view('welcome', compact("lat", "lng", "markers", "foodbanks"));
     }
 }
