@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Foodbank;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -16,10 +17,12 @@ class SearchController extends Controller
 
         // Get the High Wycombe's closest foodbanks
         $search = (new GiveAPIController)->search($lat, $lng);
-        $foodbanks = $search[0];
-        $markers = $search[1];
+        $foodbanks = $search[0] ?: [];
+        $markers = $search[1] ?: [];
 
-        return view('welcome', compact("lat", "lng", "markers", "foodbanks"));
+        $s_foodbanks = $this->getSavedFoodbanks($foodbanks);
+
+        return view('welcome', compact("lat", "lng", "markers", "foodbanks", "s_foodbanks"));
     }
 
     public function search(Request $request): View
@@ -40,6 +43,29 @@ class SearchController extends Controller
         $foodbanks = $search[0];
         $markers = $search[1];
 
-        return view('welcome', compact("lat", "lng", "markers", "foodbanks"));
+        $s_foodbanks = $this->getSavedFoodbanks($foodbanks);
+
+        return view('welcome', compact("lat", "lng", "markers", "foodbanks", "s_foodbanks"));
+    }
+
+    public function getSavedFoodbanks($foodbanks)
+    {
+        $s_foodbanks = Foodbank::all();
+        $temp_foodbanks = collect();
+
+        foreach ($foodbanks as $foodbank)
+        {
+            foreach($s_foodbanks as $s_foodbank)
+            {
+                if($foodbank->organization_slug == $s_foodbank->organization_slug)
+                {
+                    $foodbank->requires_referral = $s_foodbank->requires_referral;
+                    $foodbank->requires_volunteer = $s_foodbank->requires_volunteer;
+                    $temp_foodbanks->push($s_foodbank);
+                }
+            }
+        }
+
+        return $temp_foodbanks;
     }
 }
