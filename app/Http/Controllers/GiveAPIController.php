@@ -35,11 +35,16 @@ class GiveAPIController extends Controller
                 'lat' => $lat_lng[0],
                 'long' => $lat_lng[1],
                 'info' => $foodbank->name,
+                'slug' => $foodbank->slug,
             ]);
 
             $bank = new Foodbank;
             $bank->name = $foodbank->name;
+            $bank->organization_slug = $foodbank->slug;
+            $bank->phone = $foodbank->phone;
+            $bank->email = $foodbank->email;
             $bank->address = $foodbank->address;
+            $bank->website_url = $foodbank->urls->homepage;
 
             $foodbanks->push($bank);
         }
