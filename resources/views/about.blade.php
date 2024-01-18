@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite('resources/css/app.css')
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>FAQ</title>
+    <title>About Us</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -23,53 +23,42 @@
         <img class="w-1/3" src="images/BucksNourishLogo.jpg" alt="logo">
     </div>
     <div class="flex justify-center mb-8">
-        <h1 class="font-bold text-xl underline text-black">FAQs</h1>
+        <h1 class="font-bold text-xl underline text-green-800">About Us</h1>
     </div>
 
+
+
+        <div class="flex justify-center">
+            <img class="w-1/3" src="images/group.jpg" alt="group">
+            <div class="mt-2 ml-6">
+                <p class="  text-gray-700 ">
+                    At Bucks Nourish, we are a team of passionate people who, using a combination of programming skills and social drive, decided to tackle the problem of hunger in the Buckinghamshire region. <br>
+                    Our mission is to create a reliable and effective platform that allows residents to easily find and locate the food banks closest to them.
+                </p>
+            </div>
+        </div>
+
+    <div class="flex justify-center mt-4">
+        <img class="w-1/3" src="images/foodbank.jpg" alt="foodbank">
+        <div class="mt-2 ml-6">
+            <p class="text-gray-700">
+                We believe that access to food should not be difficult or burdensome, which is why we are creating a tool that eliminates barriers and facilitates the assistance process.
+                Our assumptions are based on the belief that good returns and helping those in need brings positive results for the entire society.
+        </div>
+    </div>
+
+    <div class="flex justify-center mt-4">
+        <img class="w-1/3" src="images/people.png" alt="people">
+        <div class="mt-2 ml-6">
+            <p class="text-gray-700">
+                At Bucks, Nourish is not just a programming project, it is our response to the challenge of hunger that affects many people in our region. We are proud that we can contribute to improving the quality of life of our neighbors, while inspiring others to actively participate in helping those in need. Together we create a community that cares for each other.
+            </p>
+        </div>
+    </div>
+
+    
     <div class="flex flex-col items-center">
-        <div id="ac1" class="max-w-screen-lg w-full mx-auto mb-3 mt-2">
-         <div class="tab mb-3 bg-white px-5 py-3 shadow-lg rounded-md relative border-t-2 border-b-2 border-l-2 border-r-2">
-                <input type="radio" name="faq" id="faq1" class="appearance-none peer">
-                <label for="faq1" class="flex items-center text-lg font-semi-bold
-                after:absolute after:content-['+'] after:right-5 after:text-2xl
-                after:text-gray-400 hover:after:text-gray-900 peer-checked:after:transform peer-checked:after:rotate-45">
-                    <h2 class="mr-2 h-8 w-8 bg-customGreen grid place-items-center text-white rounded-full">01</h2>
-                    <h3>Who we are?</h3>
-                </label>
-                <div class="answer mt-5 h-0 overflow-hidden transition ease-in-out duration-500 peer-checked:h-full">
-                    <p>We at Bucks Nourish are a small team of developers with a mission to provide the Buckinghamshire
-                    county a reliable and efficient platform to allow people to find and locate food banks closest to them.</p>
-                </div>
-            </div>
-        </div>
-        <div id="ac2" class="max-w-screen-lg w-full mx-auto mb-3">
-            <div class="tab mb-3 bg-white px-5 py-3 shadow-lg rounded-md relative border-t-2 border-b-2 border-l-2 border-r-2">
-                <input type="radio" name="faq" id="faq2" class="appearance-none peer">
-                <label for="faq2" class="flex items-center text-lg font-semi-bold
-                after:absolute after:content-['+'] after:right-5 after:text-2xl
-                after:text-gray-400 hover:after:text-gray-900 peer-checked:after:transform peer-checked:after:rotate-45">
-                    <h2 class="mr-2 h-8 w-8 bg-customGreen grid place-items-center text-white rounded-full">02</h2>
-                    <h3>What do we do?</h3>
-                </label>
-                <div class="answer mt-5 h-0 overflow-hidden transition ease-in-out duration-500 peer-checked:h-full">
-                    <p>Bucks Nourish is a food bank locator for the county of Buckinghamshire</p>
-                </div>
-            </div>
-        </div>
-        <div id="ac3" class="max-w-screen-lg w-full mx-auto mb-20">
-            <div class="tab mb-3 bg-white px-5 py-3 shadow-lg rounded-md relative border-t-2 border-b-2 border-l-2 border-r-2">
-                <input type="radio" name="faq" id="faq3" class="appearance-none peer">
-                <label for="faq3" class="flex items-center text-lg font-semi-bold
-                after:absolute after:content-['+'] after:right-5 after:text-2xl
-                after:text-gray-400 hover:after:text-gray-900 peer-checked:after:transform peer-checked:after:rotate-45">
-                    <h2 class="mr-2 h-8 w-8 bg-customGreen grid place-items-center text-white rounded-full">03</h2>
-                    <h3>What are our goals?</h3>
-                </label>
-                <div class="answer mt-5 h-0 overflow-hidden transition ease-in-out duration-500 peer-checked:h-full">
-                    <p>Bucks Nourish is a food bank locator for the county of Buckinghamshire</p>
-                </div>
-            </div>
-        </div>
+
     </div>
 
 
