@@ -27,26 +27,32 @@ class GiveAPIController extends Controller
         $markers = collect();
         $foodbanks = collect();
 
-        foreach ($response as $foodbank) {
-            $lat_lng = $foodbank->lat_lng;
-            $lat_lng = explode(",", $lat_lng);
+        if($response != null)
+        {
+            foreach ($response as $foodbank) {
+                $lat_lng = $foodbank->lat_lng;
+                $lat_lng = explode(",", $lat_lng);
 
-            $markers->push([
-                'lat' => $lat_lng[0],
-                'long' => $lat_lng[1],
-                'info' => $foodbank->name,
-                'slug' => $foodbank->slug,
-            ]);
+                $markers->push([
+                    'lat' => $lat_lng[0],
+                    'long' => $lat_lng[1],
+                    'info' => $foodbank->name,
+                    'slug' => $foodbank->slug,
+                ]);
 
-            $bank = new Foodbank;
-            $bank->name = $foodbank->name;
-            $bank->organization_slug = $foodbank->slug;
-            $bank->phone = $foodbank->phone;
-            $bank->email = $foodbank->email;
-            $bank->address = $foodbank->address;
-            $bank->website_url = $foodbank->urls->homepage;
+                $bank = new Foodbank;
+                $bank->name = $foodbank->name;
+                $bank->organization_slug = $foodbank->slug;
+                $bank->phone = $foodbank->phone;
+                $bank->email = $foodbank->email;
+                $bank->address = $foodbank->address;
+                $bank->website_url = $foodbank->urls->homepage;
 
-            $foodbanks->push($bank);
+                $foodbanks->push($bank);
+            }
+        }
+        else{
+            $foodbanks = [];
         }
 
         $search_results = [$foodbanks, $markers->toArray()];
