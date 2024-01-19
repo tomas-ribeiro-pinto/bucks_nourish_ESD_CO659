@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SearchController::class, 'index']);
 Route::post('/', [SearchController::class, 'search']);
+Route::post('/filter', [SearchController::class, 'filter']);
+Route::get('/filter', [SearchController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

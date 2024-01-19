@@ -16,13 +16,15 @@ class SearchController extends Controller
         $lng = -0.7493;
 
         // Get the High Wycombe's closest foodbanks
-        $search = (new GiveAPIController)->search($lat, $lng);
-        $foodbanks = $search[0] ?: [];
-        $markers = $search[1] ?: [];
+        $searchR = (new GiveAPIController)->search($lat, $lng);
+        $foodbanks = $searchR[0] ?: [];
+        $markers = $searchR[1] ?: [];
 
-        $s_foodbanks = $this->getSavedFoodbanks($foodbanks);
+        $search="High Wycombe";
 
-        return view('welcome', compact("lat", "lng", "markers", "foodbanks", "s_foodbanks"));
+        $currentFilters = [];
+
+        return view('welcome', compact("lat", "lng", "markers", "foodbanks", "search", "currentFilters"));
     }
 
     public function search(Request $request): View
@@ -39,13 +41,64 @@ class SearchController extends Controller
         $lat = $response->features[0]->center[1];
         $lng = $response->features[0]->center[0];
 
-        $search = (new GiveAPIController)->search($lat, $lng);
-        $foodbanks = $search[0];
-        $markers = $search[1];
+        $searchR = (new GiveAPIController)->search($lat, $lng);
+        $foodbanks = $searchR[0];
+        $markers = $searchR[1];
 
+        $currentFilters = [];
+
+        return view('welcome', compact("lat", "lng", "markers", "foodbanks", "search", "currentFilters"));
+    }
+
+    public function filter(Request $request): View
+    {
+        $search = $request->input('search');
+
+        // Call MapBox API
+        $response = Http::get('https://api.mapbox.com/geocoding/v5/mapbox.places/' . $search . '.json', [
+            'access_token' => env('MAPS_MAPBOX_ACCESS_TOKEN'),
+        ]);
+
+        // Get the latitude and longitude of the search location TODO: Handle errors
+        $response = json_decode($response);
+        $lat = $response->features[0]->center[1];
+        $lng = $response->features[0]->center[0];
+
+        $searchR = (new GiveAPIController)->search($lat, $lng);
+        $foodbanks = $searchR[0];
+        $markers = $searchR[1];
+        
         $s_foodbanks = $this->getSavedFoodbanks($foodbanks);
+        $currentFilters = $request->input('filters');
 
-        return view('welcome', compact("lat", "lng", "markers", "foodbanks", "s_foodbanks"));
+        if($currentFilters != null)
+        {
+            if (in_array("No referrals needed", $currentFilters)) {
+                $foodbanks = $s_foodbanks->where('requires_referral', false);
+            }
+
+            if (in_array("Volunteers needed", $currentFilters)) {
+                $foodbanks = $s_foodbanks->where('requires_volunteer', true);
+            }
+
+            $temp_markers = collect();
+
+            foreach($markers as $marker)
+            {
+                foreach($foodbanks as $foodbank)
+                {
+                    if($marker['slug'] == $foodbank->organization_slug)
+                    {
+                        $temp_markers = $temp_markers->push($marker);
+                    }
+                }
+            }
+
+            $markers = $temp_markers->toArray();
+            $foodbanks = $foodbanks->values();
+        }
+
+        return view('welcome', compact("lat", "lng", "markers", "foodbanks", "search", "currentFilters"));
     }
 
     public function getSavedFoodbanks($foodbanks)

@@ -73,7 +73,35 @@
         </div>
     </div>
 </div>
-@livewire('filter-banks', ['lat' => $lat, 'lng' => $lng, 'foodbanks' => $foodbanks, 'markers' => $markers, 's_foodbanks' => $s_foodbanks])
+<div class="grid grid-cols-5 gap-1 px-20 sm:justify-center">
+    <div class="col-span-3 z-0">
+        <x-maps-leaflet class="rounded-xl" :centerPoint="['lat' => $lat ?: 0, 'long' => $lng ?: 0]"
+                        :markers="$markers"></x-maps-leaflet>
+    </div>
+    <div class="col col-span-2">
+        <div class="bg-gray-100 rounded-t-2xl">
+            <div class="pt-4 ml-6">
+                <h1 class="text-2xl font-bold">Search Results:</h1>
+            </div>
+            <div>
+                @livewire('filter-banks', ['search' => $search, 'currentFilters' => $currentFilters])
+            </div>
+        </div>
+        @for($i = 0; $i < count($foodbanks); $i++)
+            <div class="row p-3 hover:bg-gray-100 rounded-lg relative mb-3">
+                <div class="p-4">
+                    <h2 class="bold text-xl">{{$foodbanks[$i]->name}}</h2>
+                    <p>{{$foodbanks[$i]->address}}</p>
+                    <div class="absolute bottom-0 right-0">
+                        <a class="text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center :ring-green-800" href="https://www.google.com/maps/dir//{{$markers[$i]['lat']}},{{$markers[$i]['long']}}" target="_blank" rel="noopener noreferrer">Directions</a>
+                        <a class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 text-center :ring-gray-800" href="https://www.google.com/maps/dir//{{$markers[$i]['lat']}},{{$markers[$i]['long']}}" target="_blank" rel="noopener noreferrer">Details</a>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        @endfor
+    </div>
+</div>
 @livewireScripts
 </body>
 </html>

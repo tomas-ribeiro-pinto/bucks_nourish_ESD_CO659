@@ -1077,27 +1077,6 @@ trait ValidatesAttributes
     }
 
     /**
-     * Validate the extension of a file upload attribute is in a set of defined extensions.
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @param  array<int, int|string>  $parameters
-     * @return bool
-     */
-    public function validateExtensions($attribute, $value, $parameters)
-    {
-        if (! $this->isValidFileInstance($value)) {
-            return false;
-        }
-
-        if ($this->shouldBlockPhpUpload($value, $parameters)) {
-            return false;
-        }
-
-        return in_array(strtolower($value->getClientOriginalExtension()), $parameters);
-    }
-
-    /**
      * Validate the given value is a valid file.
      *
      * @param  string  $attribute
@@ -1292,18 +1271,6 @@ trait ValidatesAttributes
     }
 
     /**
-     * Validate that an attribute is a valid HEX color.
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
-     */
-    public function validateHexColor($attribute, $value)
-    {
-        return preg_match('/^#(?:(?:[0-9a-f]{3}){1,2}|(?:[0-9a-f]{4}){1,2})$/i', $value) === 1;
-    }
-
-    /**
      * Validate the MIME type of a file is an image MIME type.
      *
      * @param  string  $attribute
@@ -1430,16 +1397,12 @@ trait ValidatesAttributes
      */
     public function validateJson($attribute, $value)
     {
-        if (is_array($value) || is_null($value)) {
+        if (is_array($value)) {
             return false;
         }
 
-        if (! is_scalar($value) && ! method_exists($value, '__toString')) {
+        if (! is_scalar($value) && ! is_null($value) && ! method_exists($value, '__toString')) {
             return false;
-        }
-
-        if (function_exists('json_validate')) {
-            return json_validate($value);
         }
 
         json_decode($value);
@@ -1780,7 +1743,7 @@ trait ValidatesAttributes
         [$values, $other] = $this->parseDependentRuleParameters($parameters);
 
         if (in_array($other, $values, is_bool($other) || is_null($other))) {
-            return $this->validatePresent($attribute, $value);
+            return $this->validatePresent($attribute, $value, $parameters);
         }
 
         return true;
@@ -1801,7 +1764,7 @@ trait ValidatesAttributes
         [$values, $other] = $this->parseDependentRuleParameters($parameters);
 
         if (! in_array($other, $values, is_bool($other) || is_null($other))) {
-            return $this->validatePresent($attribute, $value);
+            return $this->validatePresent($attribute, $value, $parameters);
         }
 
         return true;
@@ -1820,7 +1783,7 @@ trait ValidatesAttributes
         $this->requireParameterCount(1, $parameters, 'present_with');
 
         if (Arr::hasAny($this->data, $parameters)) {
-            return $this->validatePresent($attribute, $value);
+            return $this->validatePresent($attribute, $value, $parameters);
         }
 
         return true;
@@ -1839,7 +1802,7 @@ trait ValidatesAttributes
         $this->requireParameterCount(1, $parameters, 'present_with_all');
 
         if (Arr::has($this->data, $parameters)) {
-            return $this->validatePresent($attribute, $value);
+            return $this->validatePresent($attribute, $value, $parameters);
         }
 
         return true;
