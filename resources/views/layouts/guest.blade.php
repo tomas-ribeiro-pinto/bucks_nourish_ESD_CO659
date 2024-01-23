@@ -17,29 +17,22 @@
         @livewireStyles
     </head>
     <body class="font-sans text-gray-900 antialiased ">
-        @if (Route::has('login'))
-            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 bg-green-600 w-full border-b-2 border-b-amber-600 border-bottom text-white">
-                <a href="{{ url('/') }}"
-                   class="font-semibold hover:text-orange-300 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">Search</a>
-                <a href="{{ url('/dashboard') }}"
-                   class="font-semibold hover:text-orange-300 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">Dashboard</a>
-                <a href="{{ url('/about-us') }}"
-                   class="font-semibold hover:text-orange-300 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">About
-                    Us</a>
+        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 bg-green-600 w-full border-b-2 border-b-amber-600 border-bottom text-white">
+            <a href="{{ url('/') }}"
+               class="font-semibold hover:text-orange-300 hover:underline focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">Search</a>
+            <a href="{{ url('/dashboard') }}"
+               class="font-semibold hover:text-orange-300 hover:underline focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">Dashboard</a>
+            <a href="{{ url('/about-us') }}"
+               class="font-semibold hover:text-orange-300 hover:underline focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">About
+                Us</a>
 
-                <a href="{{ url('/faq') }}"
-                   class="font-semibold hover:text-orange-300 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">FAQ</a>
+            <a href="{{ url('/faq') }}"
+               class="font-semibold hover:text-orange-300 hover:underline focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">FAQ</a>
 
-                <a href="{{ route('login') }}"
-                   class="font-semibold hover:text-orange-300 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                    in</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}"
-                       class="ml-4 font-semibold hover:text-orange-300 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                @endif
-            </div>
-        @endif
+            <a href="{{ route('login') }}"
+               class="font-semibold hover:text-orange-300 hover:underline focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                in</a>
+        </div>
 
         <div class="max-w-7xl p-6 lg:p-8 mt-8 mx-auto">
             {{ $slot }}

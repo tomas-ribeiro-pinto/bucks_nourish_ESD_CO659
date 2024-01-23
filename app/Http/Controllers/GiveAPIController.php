@@ -40,14 +40,31 @@ class GiveAPIController extends Controller
                     'slug' => $foodbank->slug,
                 ]);
 
-                $bank = new Foodbank;
-                $bank->name = $foodbank->name;
-                $bank->organization_slug = $foodbank->slug;
-                $bank->phone = $foodbank->phone;
-                $bank->email = $foodbank->email;
-                $bank->address = $foodbank->address;
-                $bank->website_url = $foodbank->urls->homepage;
+                if(Foodbank::all()->where('organization_slug', $foodbank->slug)->first() != null)
+                {
+                    $bank = Foodbank::all()->where('organization_slug', $foodbank->slug)->first();
+                }
+                else
+                {
+                    $bank = new Foodbank();
+                    $bank->name = $foodbank->name;
+                    $bank->type = null;
+                    $bank->logo_annex_id = null;
+                    $bank->organization_slug = $foodbank->slug;
+                    $bank->phone = $foodbank->phone;
+                    $bank->email = $foodbank->email;
+                    $bank->address = $foodbank->address;
+                    $bank->website_url = $foodbank->urls->homepage;
+                    $bank->requires_referral = null;
+                    $bank->requires_volunteer = null;
+                    $bank->volunteer_information = null;
+                    $bank->opening_hours = null;
+                    $bank->accessibility = null;
+                    $bank->comments = null;
+                }
 
+                $items = explode(PHP_EOL, $foodbank->needs->needs);
+                $bank->items = $items;
                 $foodbanks->push($bank);
             }
         }

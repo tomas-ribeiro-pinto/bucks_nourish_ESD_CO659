@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="">
         <div class="flex justify-center">
-            <img class="w-2/4 " src="images/BucksNourishLogo.jpg" alt="logo">
+            <img class="md:w-2/4 " src="images/BucksNourishLogo.jpg" alt="logo">
         </div>
         <div class="justify-center w-10/12 mx-auto">
             <form method="POST">
@@ -17,6 +17,7 @@
                     </div>
                     <input type="search" id="default-search"
                            name="search"
+                           value="{{$search}}"
                            class="shadow-lg block w-full p-4 ps-10 text-l text-gray-900 border border-gray-900 rounded-lg bg-white focus:ring-green-500 focus:border-green-500 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-900 dark:text-black dark:focus:ring-green-500 dark:focus:border-green-900"
                            placeholder="Location..." required>
 
@@ -29,8 +30,8 @@
                 </div>
             </form>
         </div>
-        <div class="grid grid-cols-5 gap-1 px-20 sm:justify-center mt-8">
-            <div class="col-span-3 z-0">
+        <div class="grid grid-cols-5 gap-1 md:px-20 sm:justify-center mt-8">
+            <div class="col-span-full md:col-span-3 z-0">
                 <x-maps-leaflet class="rounded-xl" :centerPoint="['lat' => $lat ?: 0, 'long' => $lng ?: 0]"
                                 :markers="$markers"></x-maps-leaflet>
             </div>

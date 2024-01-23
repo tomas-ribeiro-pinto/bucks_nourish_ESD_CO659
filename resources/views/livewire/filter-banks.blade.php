@@ -1,17 +1,18 @@
-<div x-data="{ details: false }" class="col-span-2">
+<div x-data="{ details: false }" class="col-span-full md:col-span-2 mt-4 md:mt-0">
     <div x-show="details" style="display: none;">
-        <x-foodbank-details :foodbank="$selectedFoodbank"/>
+        <x-foodbank-details wire:model="selectedFoodbank" :foodbank="$selectedFoodbank"/>
     </div>
     <div x-show="!details">
         <div class="bg-gray-100 rounded-t-2xl">
-            <div class="pt-4 ml-6">
+            <div class="pt-4 ml-6 flex">
                 <h1 class="text-2xl font-bold">Search Results:</h1>
+                <span class="text-lg inline-block mt-auto ml-3">{{$search}}</span>
             </div>
             <!-- Active filters -->
-            <div id="#map">
-                <div class="max-w-7xl py-3 sm:flex sm:items-center lg:px-8">
+            <div>
+                <div class="max-w-7xl py-3 sm:flex sm:items-center px-4 lg:px-8">
                     <div x-data="{ open: false }"
-                         class="border-t border-gray-200">
+                         class="">
                         <template x-if="!open">
                             <button @click="open = ! open"
                                     type="button"
