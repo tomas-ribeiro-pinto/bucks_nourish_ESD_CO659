@@ -1,6 +1,6 @@
 <div x-data="{ details: false }" class="col-span-full md:col-span-2 mt-4 md:mt-0">
     <div x-show="details" style="display: none;">
-        <x-foodbank-details wire:model="selectedFoodbank" :foodbank="$selectedFoodbank"/>
+        <x-foodbank-details :foodbank="$selectedFoodbank" :needs="$selectedFoodbankNeeds"/>
     </div>
     <div x-show="!details">
         <div class="bg-gray-100 rounded-t-2xl">

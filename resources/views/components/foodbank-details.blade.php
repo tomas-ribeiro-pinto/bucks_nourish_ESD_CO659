@@ -27,7 +27,7 @@
 </div>
 <div x-data="{ tabSelected: 1}" class="row p-3 relative mb-3">
     <div>
-        <div class="hidden sm:block">
+        <div class="">
             <div class="border-b border-gray-200">
                 <div class="-mb-px flex px-3" aria-label="Tabs">
                     <x-tab-link :tab="1">Items Needed</x-tab-link>
@@ -42,8 +42,8 @@
         <div class="grid grid-cols-2">
             <div>
                 <p class="text-center text-lg font-bold">Needs:</p>
-                <ul class="list-disc list-inside">
-                    @foreach($foodbank['items'] ?: [] as $need)
+                <ul class="list-disc list-outside ml-5 mt-2">
+                    @foreach($needs ?: [] as $need)
                         <li>{{$need}}</li>
                     @endforeach
             </div>

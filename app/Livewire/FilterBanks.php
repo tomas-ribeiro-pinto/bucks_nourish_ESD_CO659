@@ -11,15 +11,28 @@ class FilterBanks extends Component
     public $search;
     public $currentFilters;
     public $foodbanks;
+    public $foodbankNeeds;
     public $markers;
     public $selectedFoodbank;
+    public $selectedFoodbankNeeds;
 
     public function mount($search, $currentFilters, $foodbanks, $markers)
     {
         $this->search = $search;
         $this->currentFilters = $currentFilters;
         $this->selectedFoodbank = new Foodbank();
-        $this->foodbanks = $foodbanks;
+        $this->foodbankNeeds = collect();
+        $tempFoodbanks = collect();
+
+        foreach ($foodbanks as $foodbank)
+        {
+            $needs = $foodbank['needs'];
+            $this->foodbankNeeds->put($foodbank->organization_slug, $needs);
+            data_forget($foodbank, 'needs');
+            $tempFoodbanks->push($foodbank);
+        }
+
+        $this->foodbanks = $tempFoodbanks;
         $this->markers = $markers;
     }
 
@@ -30,6 +43,7 @@ class FilterBanks extends Component
             'filters' => $this->filters,
             'currentFilters' => $this->currentFilters,
             'selectedFoodbank' => $this->selectedFoodbank,
+            'selectedFoddbankNeeds' => $this->selectedFoodbankNeeds,
             'foodbanks' => $this->foodbanks,
             'markers' => $this->markers,
         ]);
@@ -46,6 +60,7 @@ class FilterBanks extends Component
 
     public function selectFoodbank($foodbank)
     {
+        $this->selectedFoodbankNeeds = $this->foodbankNeeds[$foodbank['organization_slug']] ?: collect();
         $this->selectedFoodbank = $foodbank;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Foodbank;
+use App\Models\Item;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -62,9 +63,8 @@ class GiveAPIController extends Controller
                     $bank->accessibility = null;
                     $bank->comments = null;
                 }
-
                 $items = explode(PHP_EOL, $foodbank->needs->needs);
-                $bank->items = $items;
+                $bank->needs = $items;
                 $foodbanks->push($bank);
             }
         }
