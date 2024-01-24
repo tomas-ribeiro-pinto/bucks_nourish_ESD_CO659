@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                @if(Auth::user()->hasRole('super-admin'))
+                @if(Auth::user()->hasRole('superadmin'))
                     <div class="p-6 text-gray-900">
                         {{ __("Welcome Super Admin!") }}
                     </div>
@@ -17,8 +17,8 @@
                         {{ __("Welcome Admin!") }}
                     </div>
                 @endif
-            </div>
-            <div class="py-12">
+            @if(Auth::user()->organization != null)
+            </<div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="p-4 mb-2 grid grid-cols-1 md:grid-cols-3 justify-center items-center">
                         <div x-data='{ show: false }'>
@@ -46,6 +46,8 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
+
     </div>
 </x-app-layout>
