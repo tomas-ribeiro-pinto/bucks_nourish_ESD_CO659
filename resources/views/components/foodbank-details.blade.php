@@ -70,7 +70,7 @@
             <h1 class="font-bold text-xl text-green-800">Contacts:</h1>
             <p class="font-bold">Email: <span class="font-normal">{{$foodbank['email']}}</span></p>
             <p class="font-bold">Phone: <span class="font-normal">{{$foodbank['phone']}}</span></p>
-            <p class="font-bold">Phone: <a href="{{$foodbank['website_url']}}" target="_blank" rel="noopener noreferrer" class="font-normal text-blue-600 hover:text-blue-400 underline">{{$foodbank['website_url']}}</a></p>
+            <p class="font-bold">Website: <a href="{{$foodbank['website_url']}}" target="_blank" rel="noopener noreferrer" class="font-normal text-blue-600 hover:text-blue-400 underline">{{$foodbank['website_url']}}</a></p>
         </div>
     </div>
 </div>

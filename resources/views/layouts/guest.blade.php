@@ -19,9 +19,7 @@
     <body class="font-sans text-gray-900 antialiased ">
         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 bg-green-600 w-full border-b-2 border-b-amber-600 border-bottom text-white">
             <a href="{{ url('/') }}"
-               class="font-semibold hover:text-orange-300 hover:underline focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">Search</a>
-            <a href="{{ url('/dashboard') }}"
-               class="font-semibold hover:text-orange-300 hover:underline focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">Dashboard</a>
+               class="font-semibold hover:text-orange-300 hover:underline focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">Home</a>
             <a href="{{ url('/about-us') }}"
                class="font-semibold hover:text-orange-300 hover:underline focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 mr-5">About
                 Us</a>

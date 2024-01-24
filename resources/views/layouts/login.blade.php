@@ -14,22 +14,17 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased">
-<div class="min-h-screen bg-gray-100">
+<body class="font-sans text-gray-900 antialiased">
+<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white">
+    <div>
+        <a href="/">
+            <img src="{{ asset('images/BucksNourishLogo.jpg') }}" alt="Your Logo" class="block h-48 w-22">
+        </a>
+    </div>
 
-    <!-- Page Heading -->
-    @if (isset($header))
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-10/12">
-                {{ $header }}
-            </div>
-        </header>
-    @endif
-
-    <!-- Page Content -->
-    <main>
+    <div class="w-full sm:max-w-md mt-6 mb-36 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg" style="box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2)";>
         {{ $slot }}
-    </main>
+    </div>
 </div>
 </body>
 </html>

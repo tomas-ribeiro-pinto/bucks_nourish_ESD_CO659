@@ -5,17 +5,18 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('images/BucksNourishLogo.jpg') }}" alt="Your Logo" class="block h-12 w-22">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-red-600">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
+                {{--                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">--}}
+                {{--                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-black-600">--}}
+                {{--                        {{ __('Dashboard') }}--}}
+                {{--                    </x-nav-link>--}}
+                {{--                </div>--}}
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -38,12 +39,20 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        <x-dropdown-link :href="url('/')">
+                            {{ __('Home') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="url('faq')">
+                            {{ __('FAQ') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                                             onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -89,7 +98,7 @@
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                                           onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
