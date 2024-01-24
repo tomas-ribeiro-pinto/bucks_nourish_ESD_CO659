@@ -19,6 +19,10 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
+            @if(Session::has('message'))
+                <x-flash-message :message="session('message')"/>
+            @endif
+
             @include('layouts.navigation')
 
             <!-- Page Heading -->

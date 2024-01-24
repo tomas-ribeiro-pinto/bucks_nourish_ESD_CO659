@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('type')->default('foodbank');
             $table->string('organization_slug')->nullable();
-            //$table->foreignId('organization_id')->nullable();
+            $table->foreignId('organization_id')->nullable();
             //$table->foreignId('address_id')->nullable();
             $table->foreignId('logo_annex_id')->nullable();
             $table->string('address')->nullable();

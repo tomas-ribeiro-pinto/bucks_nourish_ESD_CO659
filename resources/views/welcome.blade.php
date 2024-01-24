@@ -35,7 +35,8 @@
                 <x-maps-leaflet class="rounded-xl" :centerPoint="['lat' => $lat ?: 0, 'long' => $lng ?: 0]"
                                 :markers="$markers"></x-maps-leaflet>
             </div>
-            @livewire('filter-banks', ['search' => $search, 'currentFilters' => $currentFilters, 'foodbanks' => $foodbanks, 'markers' => $markers])
+            @livewire('filter-banks', ['search' => $search, 'currentFilters' => $currentFilters,
+                                        'foodbanks' => $foodbanks, 'markers' => $markers, "lat" => $lat, "lng" => $lng])
         </div>
     </div>
 </x-guest-layout>

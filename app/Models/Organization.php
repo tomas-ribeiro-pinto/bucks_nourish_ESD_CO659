@@ -10,7 +10,6 @@ class Organization extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
     protected $guarded = [];
 
     public function foodbanks()
