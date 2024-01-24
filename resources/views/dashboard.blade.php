@@ -18,7 +18,8 @@
                     </div>
                 @endif
             @if(Auth::user()->organization != null)
-            </<div class="py-12">
+            </div>
+            <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="p-4 mb-2 grid grid-cols-1 md:grid-cols-3 justify-center items-center">
                         <div x-data='{ show: false }'>
