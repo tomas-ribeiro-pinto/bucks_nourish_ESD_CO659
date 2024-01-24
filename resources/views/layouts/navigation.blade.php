@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ url('/') }}">
+                    <a href="{{ route('dashboard') }}">
                         <img src="{{ asset('images/BucksNourishLogo.jpg') }}" alt="Your Logo" class="block h-12 w-22">
                     </a>
                 </div>

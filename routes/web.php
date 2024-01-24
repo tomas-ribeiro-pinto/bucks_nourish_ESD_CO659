@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\FoodbankController;
+use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
+use App\Models\Organization;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +26,8 @@ Route::get('/filter', [SearchController::class, 'index']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/dashboard/update', [OrganizationController::class, 'update'])
+    ->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,5 +46,10 @@ Route::get('about-us', function () {
 Route::get('faq', function () {
     return view('faq');
 });
+
+Route::get('/foodbanks', [FoodbankController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('foodbanks');
+Route::post('/foodbanks/update', [FoodbankController::class, 'update'])
+    ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

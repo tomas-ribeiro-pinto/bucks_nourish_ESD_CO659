@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('website_url')->nullable();
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('charity_registration_id')->nullable();
             $table->string('foodbank_network')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

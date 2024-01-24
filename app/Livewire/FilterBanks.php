@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Http\Controllers\GiveAPIController;
+use App\Http\Controllers\SearchController;
 use App\Models\Foodbank;
 use Livewire\Component;
 
@@ -16,7 +18,10 @@ class FilterBanks extends Component
     public $selectedFoodbank;
     public $selectedFoodbankNeeds;
 
-    public function mount($search, $currentFilters, $foodbanks, $markers)
+    public $lat;
+    public $lng;
+
+    public function mount($search, $currentFilters, $foodbanks, $markers, $lat, $lng)
     {
         $this->search = $search;
         $this->currentFilters = $currentFilters;
@@ -34,19 +39,18 @@ class FilterBanks extends Component
 
         $this->foodbanks = $tempFoodbanks;
         $this->markers = $markers;
+        $this->lat = $lat;
+        $this->lng = $lng;
     }
 
     public function render()
     {
+        // Re-render the results list fetching information from the GiveAPI TODO:: Improve efficiency by fixing bug
+        $new_search = (new GiveAPIController)->search($this->lat, $this->lng);
+        $this->foodbanks = $new_search[0];
+        $this->markers = $new_search[1];
         $this->filters = collect(["no-referral" => "No referrals needed", "volunteer" => "Volunteers needed"]);
-        return view('livewire.filter-banks', [
-            'filters' => $this->filters,
-            'currentFilters' => $this->currentFilters,
-            'selectedFoodbank' => $this->selectedFoodbank,
-            'selectedFoddbankNeeds' => $this->selectedFoodbankNeeds,
-            'foodbanks' => $this->foodbanks,
-            'markers' => $this->markers,
-        ]);
+        return view('livewire.filter-banks');
     }
 
     public function updateFilters($filter)
@@ -60,7 +64,7 @@ class FilterBanks extends Component
 
     public function selectFoodbank($foodbank)
     {
-        $this->selectedFoodbankNeeds = $this->foodbankNeeds[$foodbank['organization_slug']] ?: collect();
+        $this->selectedFoodbankNeeds = $this->foodbankNeeds[$foodbank['organization_slug']] ?? collect();
         $this->selectedFoodbank = $foodbank;
     }
 }
